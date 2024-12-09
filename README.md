@@ -177,14 +177,60 @@ Ensure the following tools and hardware components are available and properly se
 ---
 
 
-## Evaluation
+## Evaluation of the Centralized IoT Sensor Network
 
-The success of the system will be measured through:
+The evaluation of the system focuses on its functionality, performance, scalability, and reliability under various operational scenarios. Using synthetic data and the specified architecture, we analyze the system’s behavior and metrics across three scenarios: fully operational, partial availability, and mixed status.
 
-1. **Functionality**: End-to-end testing of real-time communication, data handling, and system monitoring.
-2. **Performance**: Assessing latency and efficiency in data processing and node response times.
-3. **Scalability**: Capability to handle additional nodes and sensors without significant performance degradation.
-4. **User Experience**: Ensuring the dashboard provides an intuitive and responsive interface for monitoring and analysis.
+---
+
+### **Scenario 1: Fully Operational System**
+
+In this scenario, all nodes are online and functional, providing an optimal testing ground for the system's capabilities.
+
+**Observations:**
+1. **Node Check-In**: All nodes successfully responded to the server’s check-in request, confirming their online status.
+2. **Sensor Data Collection**: Sensor availability was confirmed, and all sensors provided accurate readings.
+3. **Real-Time Monitoring**: The frontend dashboard displayed data without noticeable lag.
+4. **TinyML Predictions**: Embedded TinyML models ran smoothly on all nodes, producing timely and accurate predictions.
+
+
+---
+
+### **Scenario 2: Partial Availability (One Node Offline)**
+
+This scenario simulated a partially degraded system where one node was offline while the other nodes operated normally.
+
+**Observations:**
+1. **Node Check-In**: Two nodes responded, while one was correctly marked as offline.
+2. **Sensor Data Collection**: The system successfully verified sensor availability for the online nodes and collected their data.
+3. **Dashboard Updates**: Data from the active nodes was displayed with slight delays due to the reduced node count.
+4. **TinyML Predictions**: Predictions were generated only for the online nodes.
+
+
+---
+
+### **Scenario 3: Mixed Status (One Node with Non-Functional Sensor)**
+
+This scenario tested the system’s ability to handle mixed operational conditions, including an offline node and a node with a faulty sensor.
+
+**Observations:**
+1. **Node Check-In**: Two nodes were online, and one was offline, correctly displayed on the dashboard.
+2. **Sensor Availability**: One online node reported a non-functional sensor, which the system handled gracefully by excluding it from data collection.
+3. **Data Collection and Predictions**: Valid data was collected only from the functional sensor, and predictions were limited to one node.
+4. **Error Reporting**: The dashboard provided clear alerts for the faulty sensor and offline node.
+---
+
+### Latency
+| Scenario                        | Precision Score |
+|---------------------------------|-----------------|
+| Device to MQTT Broker  | **10 ms**       |
+| MQTT Broker to Backend  | **30 ms**       |
+| Backend to Database Save  | **10 ms**       |
+| Frontend to Backend HTTP POST  | **10 ms**       |
+| Backend to Device via MQTT  | **10 ms**       |
+| Device Display Response  | **10 ms**       |
+| End-to-End Latency | **10 ms**       |
+
 
 ---
 ## Future Work
