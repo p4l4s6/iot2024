@@ -94,42 +94,6 @@ Hardware implementation involves setting up Raspberry Pi Pico nodes with BMP sen
 
 ---
 
-## Evaluation
-
-The success of the system will be measured through:
-
-1. **Functionality**: End-to-end testing of real-time communication, data handling, and system monitoring.
-2. **Performance**: Assessing latency and efficiency in data processing and node response times.
-3. **Scalability**: Capability to handle additional nodes and sensors without significant performance degradation.
-4. **User Experience**: Ensuring the dashboard provides an intuitive and responsive interface for monitoring and analysis.
-
----
-
-## Deliverables
-
-- **Backend**:
-  - Fully functional Django application with documented APIs.
-  - Integrated MQTT communication.
-
-- **Frontend**:
-  - Interactive dashboard with real-time updates.
-  - Data visualization and alerting mechanisms.
-
-- **Hardware**:
-  - Configured Raspberry Pi Pico nodes with functional firmware.
-  - Embedded TinyML for edge analytics.
-
----
-
-## Future Work
-
-- Implement more advanced data analytics and visualization tools in the dashboard.
-- Add support for additional sensor types to expand functionality.
-- Explore edge computing enhancements to optimize processing.
-- Develop mobile applications for on-the-go monitoring.
-
----
-
 ## How to Use
 
 ### Prerequisites
@@ -151,50 +115,51 @@ Ensure the following tools and hardware components are available and properly se
 ### General Instructions
 
 1. **Clone the Repository**:
-  ```
-   git clone https://github.com/p4l4s6/iot2024.git
-   cd iot2024/
-   ```
+    ```
+       git clone https://github.com/p4l4s6/iot2024.git
+       cd iot2024/
+    ```
 
 ### Backend Setup
 
-1. Create a Virtual Environment:
-  ```
-  python3 -m venv venv
-  ```
+1. Move to backend folder and create a Virtual Environment:
+      ```
+      cd backend/
+      python3 -m venv venv
+      ```
 
 2. Activate the Virtual Environment:
 
-On Linux/macOS:
-  ```
-   source venv/bin/activate
-  ```
-
-On Windows:
-  ```
-    .\venv\Scripts\activate
-  ```
+    **On Linux/macOS**:
+      ```
+       source venv/bin/activate
+      ```
+    
+    **On Windows**:
+      ```
+        .\venv\Scripts\activate
+      ```
 
 3. Install Requirements:
-  ```
-  pip install -r requirements.txt
-  ```
+      ```
+      pip install -r requirements.txt
+      ```
 
-4. Update .env File:
+4. Copy the .env.example file to .env 
 
-    Copy the .env.example file to .env 
     Update the .env file with your configuration details (e.g., database credentials, MQTT broker settings).
 
+
 5. Run Migrations:
-  ```
-  python manage.py makemigrations
-  python manage.py migrate
-  ```
+      ```
+      python manage.py makemigrations
+      python manage.py migrate
+      ```
 
 6. Start the Development Server:
-  ```
-  python manage.py runserver
-  ```
+      ```
+      python manage.py runserver
+      ```
 
 ### Hardware Setup
 
@@ -204,18 +169,30 @@ On Windows:
    - Adafruit BMP
    - Adafruit SSD1306
 
-3. Open the .ino File:
+2. Navigate to the hardware folder in the repository and open the .ino file.
+3. Change the Node ID, Wi-Fi credentials, and MQTT broker credentials in the .ino file.
+4. Connect the Raspberry Pi Pico W to your computer
+5. Flash the updated firmware onto the device.
 
-    Navigate to the hardware folder in the repository and open the .ino file.
+---
 
-4. Update the Firmware:
 
-    Change the Node ID, Wi-Fi credentials, and MQTT broker credentials in the .ino file.
+## Evaluation
 
-5. Flash the Firmware:
+The success of the system will be measured through:
 
-    Connect the Raspberry Pi Pico W to your computer.
-    Flash the updated firmware onto the device.
+1. **Functionality**: End-to-end testing of real-time communication, data handling, and system monitoring.
+2. **Performance**: Assessing latency and efficiency in data processing and node response times.
+3. **Scalability**: Capability to handle additional nodes and sensors without significant performance degradation.
+4. **User Experience**: Ensuring the dashboard provides an intuitive and responsive interface for monitoring and analysis.
+
+---
+## Future Work
+
+- Implement more advanced data analytics and visualization tools in the dashboard.
+- Add support for additional sensor types to expand functionality.
+- Explore edge computing enhancements to optimize processing.
+- Develop mobile applications for on-the-go monitoring.
 
 ---
 
