@@ -18,3 +18,7 @@ class SensorDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorData
         fields = '__all__'
+
+
+class PublishDataSerializer(serializers.Serializer):
+    input_data = serializers.CharField(max_length=50)

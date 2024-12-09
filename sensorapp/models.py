@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 from coreapp.base import BaseModel
+from sensorapp.constants import SensorType
 
 
 # Create your models here.
@@ -25,6 +26,7 @@ class Sensor(BaseModel):
     desc = models.TextField(null=True, blank=True)
     is_online = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
+    sensor_type = models.SmallIntegerField(choices=SensorType.choices, default=SensorType.INPUT)
 
     def __str__(self):
         return self.name
@@ -34,4 +36,3 @@ class SensorData(BaseModel):
     uid = models.UUIDField(unique=True, editable=False, db_index=True, default=uuid.uuid4)
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
     data = models.JSONField()
-
