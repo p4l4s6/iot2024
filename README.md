@@ -162,7 +162,7 @@ Ensure the following tools and hardware components are available and properly se
       python manage.py runserver
       ```
 
-### Frondend Setup
+### Frontend Setup
 1. Enter frontend folder of the repository:
    ```
    cd frondend/
