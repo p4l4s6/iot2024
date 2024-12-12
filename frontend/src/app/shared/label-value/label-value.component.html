@@ -1,0 +1,4 @@
+<div>
+  <label>{{ label }} </label> :
+  <span [ngClass]="{'inactive': value==='No'}">  {{!isDate? value: value| date : "medium"}}</span>
+</div>

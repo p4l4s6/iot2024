@@ -1,0 +1,24 @@
+.device-container {
+    .card-container {      
+        margin: 1rem;
+        width: 45%;
+        p-card {
+            // .inactive {
+            //     color: red
+            // }
+        }
+
+        ::ng-deep {
+               
+                .p-card {
+                
+                    // color:red;
+                    padding:1rem;
+                    .p-card-body {
+                        padding: 0px!important
+                    }
+                }
+         
+        }
+    }
+}

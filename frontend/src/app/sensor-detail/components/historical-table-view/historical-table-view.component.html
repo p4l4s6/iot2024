@@ -1,0 +1,40 @@
+<p-table
+  [value]="sensorData"
+  [paginator]="true"
+  [rows]="5"
+  [responsiveLayout]="'scroll'"
+  [sortMode]="'multiple'"
+>
+  <!-- Table Header -->
+  <ng-template pTemplate="header">
+    <tr>
+      <ng-container *ngFor="let col of columns">
+        <th [pSortableColumn]="col.field">
+          {{ col.header }}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+          <p-columnFilter
+            [field]="col.field"
+            [type]="'text'"
+            display="menu"
+            [showAddButton]="true"
+            [matchMode]="'contains'"
+          ></p-columnFilter>
+        </th>
+      </ng-container>
+    </tr>
+  </ng-template>
+
+  <!-- Table Body -->
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <ng-container *ngFor="let col of columns">
+        <td>
+          <ng-container *ngIf="col.type === 'date'; else defaultContent">
+            {{ rowData[col.field] }}
+          </ng-container>
+          <ng-template #defaultContent>{{ rowData[col.field] }}</ng-template>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-template>
+</p-table>

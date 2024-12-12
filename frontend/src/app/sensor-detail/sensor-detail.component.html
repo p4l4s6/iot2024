@@ -1,0 +1,22 @@
+<p-dialog
+  [header]="'Sensor data: ' + sensorInfo?.name"
+  (onHide)="close()"
+  [(visible)]="display"
+  [style]="{ width: '95vw', height: '85vh' }"
+>
+  <div *ngIf="sensorData.length; else noData" class="view-container">
+    <button type="button" [ngClass]="{'btn': true, 'btn-primary': showChartView, 'btn-outline-primary': !showChartView}" (click)="switchViewHandler(viewType.CHART_VIEW)">Chart View</button>
+    <button [ngClass]="{'btn': true,'btn-primary': !showChartView, 'btn-outline-primary': showChartView}"(click)="switchViewHandler(viewType.TABLE_VIEW)">Table View</button>
+    <div class="mt-1">
+      <div class="chart-view" *ngIf="showChartView">
+        <app-chart-view [sensorInfo]="sensorInfo"></app-chart-view>
+        </div>
+        <div class="table-view" *ngIf="!showChartView">
+          <app-historical-table-view  [sensorData]="sensorData" [sensorInfo]="sensorInfo"></app-historical-table-view>
+        </div>
+    </div>
+    
+  </div>
+  <ng-template #noData> No data available </ng-template>
+</p-dialog>
+ 

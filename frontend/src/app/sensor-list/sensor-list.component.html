@@ -1,0 +1,97 @@
+<div class="sensor-list-header">
+  <span class="back fa fa-arrow-left" (click)="returnToNode()"> </span>
+ <h6 (click)="returnToNode()">
+  {{ node.name }}
+ </h6>
+</div>
+
+<div class="table-container">
+  <p-table [value]="sensors">
+    <ng-template pTemplate="header">
+      <tr>
+        <ng-container *ngFor="let col of cols">
+          <th *ngIf="!col.hidden">
+            {{ col.header }}
+          </th>
+        </ng-container>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-sensor let-i="rowIndex">
+      <tr>
+        <ng-container *ngFor="let col of cols">
+          <td *ngIf="!col.hidden" [ngSwitch]="col.field">
+            <ng-container *ngSwitchCase="'created_at'">
+              {{ sensor[col.field] | date : "medium" }}
+            </ng-container>
+            <ng-container *ngSwitchCase="'updated_at'">
+              {{ sensor[col.field] | date : "medium" }}
+            </ng-container>
+            <ng-container *ngSwitchCase="'is_active'">
+              <span
+                [ngClass]="
+                  sensor[col.field]
+                    ? 'badge text-bg-success'
+                    : 'badge text-bg-secondary'
+                "
+                >{{ sensor[col.field] ? "Yes" : "No" }}</span
+              >
+            </ng-container>
+            <ng-container *ngSwitchCase="'is_online'">
+              <span
+                [ngClass]="
+                  sensor[col.field]
+                    ? 'badge text-bg-success'
+                    : 'badge text-bg-secondary'
+                "
+                >{{ sensor[col.field] ? "Yes" : "No" }}</span
+              >
+            </ng-container>
+            <ng-container *ngSwitchCase="'action'">
+              <i
+              class="fa fa-television"
+              style="cursor: pointer; margin-right: 1rem;"
+              (click)="openPopupDisplay(i)"
+              pTooltip="Display Control"
+            ></i>
+              <ng-container *ngIf="sensor.is_active && sensor.is_online">
+              <i
+              class="fa fa-external-link"
+              style="cursor: pointer"
+              (click)="openSensorDetail(i)"
+              pTooltip="Detail"
+            ></i>
+              </ng-container>
+              
+
+              
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              {{ sensor[col.field] }}
+            </ng-container>
+            <!-- <ng-template #default>
+              {{ sensor[col.field] }}
+            </ng-template> -->
+          </td>
+        </ng-container>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<app-sensor-detail
+  *ngIf="showDetail"
+  [display]="showDetail"
+  (closePopup)="onClose($event)"
+  [sensorInfo]="selectedSensor"
+></app-sensor-detail>
+
+<app-display-popup 
+*ngIf="showDisplayPopup"
+[sensorId] = "selectedSensor?.id"
+[display]="showDisplayPopup"
+(closePopup)="closeDisplayPopup($event)">
+
+</app-display-popup>
+
+
+

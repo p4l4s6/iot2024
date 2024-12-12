@@ -1,0 +1,38 @@
+<p-dialog
+  header="Display Output"
+  (onHide)="close()"
+  [(visible)]="display"
+  [style]="{ width: '70vw', height: '60vh' }"
+>
+  <form [formGroup]="displayForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-4">
+        <label for="text" class="form-label">
+        Text to display
+        </label>
+        <input
+          [maxLength]="50"
+          id="text"
+          type="text"
+          class="form-control"
+          formControlName="text"
+          placeholder="input text"
+        />
+        <div  class="text-danger pull-right">
+            {{50 - displayForm.get('text').value?.length}} characters remaining
+          </div>
+        <div *ngIf="displayForm.controls['text'].touched && displayForm.controls['text'].invalid" class="text-danger">
+          Input is required.
+        </div>
+      </div>
+      
+      <button
+      type="submit"
+      pButton
+      label="Send to display"
+      class="btn mt-3"
+      style="width: 200px"
+      [disabled]="displayForm.invalid"
+      [ngClass]="{ 'btn-primary': !displayForm.invalid, 'btn-secondary': displayForm.invalid }"
+    >Send to display</button>
+  </form>
+</p-dialog>
