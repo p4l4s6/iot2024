@@ -5,3 +5,12 @@
 // .btn-secondary {
 //     cursor: not-allowed;
 // }
+@media screen and (max-width: 960px) {
+    .p-datatable-tbody > tr > td {
+      display: table-cell !important;
+      width: auto !important;
+      justify-content: unset !important;
+      align-items: unset !important;
+    }
+  }
+  
