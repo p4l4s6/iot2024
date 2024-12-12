@@ -164,11 +164,18 @@ Ensure the following tools and hardware components are available and properly se
 
 ### Frondend Setup
 1. Enter frontend folder of the repository:
+   ```
    cd frondend/
+   ```
 2. Install dependencies:
+   ```
    npm install -s -f
+   ```
 3. Serve front end
+   ```
    ng serve
+   ```
+4. Visit website on browser: localhost:4200
 
 
 ### Hardware Setup
