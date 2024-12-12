@@ -63,7 +63,7 @@ export class ChartViewComponent implements OnInit, AfterViewInit, OnDestroy {
       }, {
         name: `Sensor ${this.sensorInfo.id} - Anomoly`,
         dataPoints: this.getTempretureData(this.anomolyData),
-        toolTipContent: `{x}: Sensor ${this.sensorInfo.id}: {y} °C`,
+        toolTipContent: `{x}: Sensor ${this.sensorInfo.id}: {y} °C - Anomoly`,
         fillOpacity: 0.6,
         ...commonDataDef,
       }
@@ -100,7 +100,7 @@ export class ChartViewComponent implements OnInit, AfterViewInit, OnDestroy {
       },{
         name: `Sensor ${this.sensorInfo.id} - Anomoly`,
         dataPoints: this.getPressureData(this.anomolyData),
-        toolTipContent: `{x}: Sensor ${this.sensorInfo.id}: {y} hPa`,
+        toolTipContent: `{x}: Sensor ${this.sensorInfo.id}: {y} hPa - Anomoly`,
         fillOpacity: 0.6,
         ...commonDataDef,
       }

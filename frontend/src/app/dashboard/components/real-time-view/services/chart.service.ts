@@ -7,7 +7,7 @@ import { commonOption } from '../chart.model';
 export class ChartService {
   constructor() {}
 
-  getTempretureOption(data=[], additionalOptions?) {
+  getTempretureOption(data = [], additionalOptions?) {
     return {
       ...commonOption,
       ...{
@@ -15,8 +15,16 @@ export class ChartService {
           text: 'Temperature',
         },
         axisX: {
-          valueFormatString: "HH:mm:ss", 
-          labelFormatter: (e) => e.value.toLocaleString(),
+          labelAngle: 40,
+          valueFormatString: 'HH:mm:ss',
+          labelFormatter: (e) => {
+            const date = new Date(e.value);
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+            return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+          },
         },
         axisY: {
           suffix: '℃',
@@ -27,7 +35,7 @@ export class ChartService {
     };
   }
 
-  getpressureOption(data=[], additionalOptions?) {
+  getpressureOption(data = [], additionalOptions?) {
     return {
       ...commonOption,
       ...{
@@ -35,8 +43,16 @@ export class ChartService {
           text: 'Pressure',
         },
         axisX: {
-          valueFormatString: "HH:mm:ss", 
-          labelFormatter: (e) => e.value.toLocaleString(),
+          labelAngle: 40,
+          valueFormatString: 'HH:mm:ss',
+          labelFormatter: (e) => {
+            const date = new Date(e.value);
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+            return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+          },
         },
         axisY: {
           suffix: 'hPa',

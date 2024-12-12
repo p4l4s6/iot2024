@@ -1,7 +1,5 @@
 export const commonOption = {
-  toolTip: {
-    shared: true,
-  },
+
   zoomEnabled: true,
   legend: {
     cursor: 'pointer',
@@ -24,7 +22,7 @@ export const commonDataDef = {
   markerType: "circle",
   markerSize: 8, 
   xValueType: 'dateTime',
-  xValueFormatString: 'hh:mm:ss TT',
+  xValueFormatString: 'hh:mm:ss.fff TT',
   showInLegend: true,
 };
 
