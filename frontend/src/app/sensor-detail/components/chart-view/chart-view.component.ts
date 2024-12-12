@@ -116,26 +116,13 @@ export class ChartViewComponent implements OnInit, AfterViewInit, OnDestroy {
   
 
   updateChart() {
+    console.time('sensor data');
     this.sensorService
     .getSensorDataById(this.sensorInfo.id, this.limit)
     .subscribe((res) => {
+      console.timeEnd('sensor data');
       this.sensorData = res.data.results;
       this.anomolyData =this.sensorData.filter(sensor=>sensor.data.is_anomaly);
-
-      // this.tempretureChart?.data[0]?.dataPoints = [
-      //   this.getTempretureData(this.sensorData)
-      // ];
-      // this.tempretureChart?.data[1]?.dataPoints = [
-      //   this.getTempretureData(this.anomolyData)
-      // ]
-
-      // this.pressureChart.data[0].dataPoints = [
-      //   this.getPressureData(this.sensorData)
-      // ];
-      // this.pressureChart.data[1].dataPoints = [
-      //   this.getPressureData(this.anomolyData)];
-      
-
       this.getChartOptions();
 
       this.tempretureChart?.render();

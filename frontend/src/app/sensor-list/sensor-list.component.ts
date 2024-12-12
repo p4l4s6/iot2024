@@ -24,7 +24,9 @@ export class SensorListComponent implements OnInit {
   }
 
   getSensorListByDevice() {
+    console.time('sensors');
     this.sensorService.getSensorListByDevice(this.node.id).subscribe((res) => {
+      console.timeEnd('sensors');
       if (res?.data) {
         this.sensors = res.data.results.sort((a, b) => a.id - b.id);
       }
