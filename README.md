@@ -102,6 +102,7 @@ Ensure the following tools and hardware components are available and properly se
 
 - **Software**:
   - Python (3.8 or higher)
+  - Node (20.17.0)
   - PostgreSQL
   - MQTT Broker (e.g., Eclipse Mosquitto)
   - Arduino IDE
@@ -160,6 +161,15 @@ Ensure the following tools and hardware components are available and properly se
       ```
       python manage.py runserver
       ```
+
+### Frondend Setup
+1. Enter frontend folder of the repository:
+   cd frondend/
+2. Install dependencies:
+   npm install -s -f
+3. Serve front end
+   ng serve
+
 
 ### Hardware Setup
 
