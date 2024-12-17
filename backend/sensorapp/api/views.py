@@ -8,12 +8,20 @@ from rest_framework.views import APIView
 from . import filters
 from . import serializers
 from ..models import Device, Sensor, SensorData
-from ..utils.base_mqtt import publish_data, MQTT_EVENT_DISPLAY_DATA
+from ..utils.base_mqtt import publish_data, MQTT_EVENT_DISPLAY_DATA, MQTT_EVENT_CHECK_SENSORS
+from ..utils.cron_job import make_device_offline
 
 
 class DeviceAPIView(ListAPIView):
     queryset = Device.objects.filter(is_active=True)
     serializer_class = serializers.DeviceSerializer
+
+    def get_queryset(self):
+        make_device_offline()
+        for device in self.queryset.all():
+            topic = f"nodes/{device.uid}/"
+            publish_data(topic, MQTT_EVENT_CHECK_SENSORS)
+        return self.queryset
 
 
 class SensorAPIView(ListAPIView):

@@ -1,4 +1,7 @@
+import datetime
 import json
+import logging
+import time
 
 import paho.mqtt.client as mqtt
 from . import db_utils
@@ -17,6 +20,8 @@ MQTT_EVENT_DISPLAY_DATA = "display_data"
 
 # Global MQTT Client
 client = mqtt.Client()
+logger = logging.getLogger('django')
+
 
 def update_device_status(uid, is_online):
     """
@@ -73,8 +78,10 @@ def on_message(cl, userdata, msg):
     Callback for when a PUBLISH message is received from the server.
     """
     try:
+        t2 = int(time.time() * 1000)
         payload = json.loads(msg.payload.decode('utf-8'))
         topic = msg.topic
+        t1 = payload.get("timestamp")
 
         if topic == MQTT_TOPIC_ONLINE_STATUS:
             uid = payload.get("node_id")
@@ -91,6 +98,10 @@ def on_message(cl, userdata, msg):
             i2c_address = payload.get("i2c_address")
             data = payload.get("data")
             save_sensor_data(device_uid, i2c_address, data)
+
+        t3 = int(time.time() * 1000)
+        logger.error(f"Topic:{topic} === t1:{t1} -- t2:{t2} -- t3:{t3}")
+
 
     except json.JSONDecodeError as e:
         print(f"Failed to decode JSON: {e}")

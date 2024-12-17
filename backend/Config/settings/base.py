@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'drf_spectacular',
+    'django_crontab',
     'django.contrib.staticfiles',
     'coreapp.apps.CoreappConfig',
     'sensorapp.apps.SensorappConfig',
@@ -146,3 +147,7 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
+
+CRONJOBS = [
+    ('* * * * *', 'sensorapp.utils.cron_job.run_task'),
+]
