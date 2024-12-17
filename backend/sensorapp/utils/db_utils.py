@@ -30,7 +30,7 @@ def get_sensor_by_device_uid_and_i2c_address(device, i2c_address):
         Sensor: The matching Sensor instance, or None if not found.
     """
     try:
-        return Sensor.objects.get(device=device, i2c_address=i2c_address, is_active=True)
+        return Sensor.objects.get(device=device, i2c_address=f"0x{i2c_address}", is_active=True)
     except Sensor.DoesNotExist:
         print(f"Sensor with I2C address {i2c_address} does not exist for Device {device}.")
         return None
