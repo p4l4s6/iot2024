@@ -20,7 +20,6 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "@canvasjs/angular-charts": "^1.2.0",
-    "bootstrap": "^5.3.3",
     "font-awesome": "^4.7.0",
     "primeicons": "^5.0.0",
     "primeng": "^13.4.1",
