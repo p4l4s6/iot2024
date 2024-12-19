@@ -1,5 +1,16 @@
 # IoT-Based Monitoring System
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/p4l4s6/iot2024)
+![GitHub last commit](https://img.shields.io/github/last-commit/p4l4s6/iot2024)
+![GitHub top language](https://img.shields.io/github/languages/top/p4l4s6/iot2024)
+![GitHub language count](https://img.shields.io/github/languages/count/p4l4s6/iot2024)
+![GitHub License](https://img.shields.io/github/license/p4l4s6/iot2024)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/p4l4s6/iot2024)
+![GitHub repo size](https://img.shields.io/github/repo-size/p4l4s6/iot2024)
+![GitHub forks](https://img.shields.io/github/forks/p4l4s6/iot2024)
+![GitHub Repo stars](https://img.shields.io/github/stars/p4l4s6/iot2024)
+
+
 ## Introduction
 
 This project focuses on building a robust IoT-based monitoring system utilizing Raspberry Pi Pico W, BMP sensors, machine learning, and MQTT communication. The system is designed to efficiently manage sensor nodes, collect environmental data, and provide real-time analytics and insights through a user-friendly dashboard.
