@@ -64,12 +64,21 @@ The backend is built using Django to ensure a robust architecture for managing d
 The frontend provides an interactive and responsive interface for system monitoring.
 
 #### Key Features
+  - Display nodes with real-time status
+  - Display sensors under each nodes
+  - Text input to the display device
+  - Chart view to :
+    - monitor relal-time sensor data
+    - display ML predicted anomoly sensor data
+  - Table view to check historical sensor data
 
-- **Dashboard**:
-  - Displays real-time statuses of nodes and sensors.
-  - Alerts for offline nodes or malfunctioning sensors.
-  - Visualizes sensor data using libraries like Chart.js or D3.js.
 
+- **Main Libraries**:
+  - Angular
+  - Font Awesome
+  - Chart.js
+  - Primeng
+  
 - **Real-Time Updates**:
   - Implements long polling for fetching updates from the backend.
 
@@ -162,7 +171,7 @@ Ensure the following tools and hardware components are available and properly se
       python manage.py runserver
       ```
 
-### Frontend Setup
+### Frontend Setup 
 1. Enter frontend folder of the repository:
    ```
    cd frondend/

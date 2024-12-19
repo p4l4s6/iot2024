@@ -7,7 +7,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { RealTimeViewComponent } from './dashboard/components/real-time-view/real-time-view.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { HistoricalViewComponent } from './dashboard/components/historical-view/historical-view.component';
@@ -30,45 +30,39 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 // import { ButtonModule } from 'primeng/button';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    RealTimeViewComponent,
-    LoginComponent,
-    MainLayoutComponent,
-    HistoricalViewComponent,
-    SensorListComponent,
-    SensorDetailComponent,
-    MainHeaderComponent,
-    SensorCardComponent,
-    ChartViewComponent,
-    HistoricalTableViewComponent,
-    DeviceCardsComponent,
-    LabelValueComponent,
-    DisplayPopupComponent
-  ],
-  imports: [
-    HttpClientModule,
-    // ButtonModule,
-    BrowserModule,
-    ReactiveFormsModule,
-    TooltipModule,
-    FormsModule,
-    AppRoutingModule,
-    CanvasJSAngularChartsModule,
-    BrowserAnimationsModule,
-    DialogModule,
-    TabViewModule,
-    TableModule,
-    CardModule,
-    ToastModule
-  ],
-  providers: [ {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptorService,
-    multi: true
-  }, MessageService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        DashboardComponent,
+        RealTimeViewComponent,
+        LoginComponent,
+        MainLayoutComponent,
+        HistoricalViewComponent,
+        SensorListComponent,
+        SensorDetailComponent,
+        MainHeaderComponent,
+        SensorCardComponent,
+        ChartViewComponent,
+        HistoricalTableViewComponent,
+        DeviceCardsComponent,
+        LabelValueComponent,
+        DisplayPopupComponent
+    ],
+    bootstrap: [AppComponent], imports: [
+        // ButtonModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        TooltipModule,
+        FormsModule,
+        AppRoutingModule,
+        CanvasJSAngularChartsModule,
+        BrowserAnimationsModule,
+        DialogModule,
+        TabViewModule,
+        TableModule,
+        CardModule,
+        ToastModule], providers: [{
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptorService,
+            multi: true
+        }, MessageService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

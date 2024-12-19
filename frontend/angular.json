@@ -36,7 +36,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
@@ -45,7 +44,6 @@
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -85,10 +83,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dashboard-IOT:build:production"
+              "buildTarget": "dashboard-IOT:build:production"
             },
             "development": {
-              "browserTarget": "dashboard-IOT:build:development"
+              "buildTarget": "dashboard-IOT:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +94,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dashboard-IOT:build"
+            "buildTarget": "dashboard-IOT:build"
           }
         },
         "test": {
@@ -121,6 +119,5 @@
         }
       }
     }
-  },
-  "defaultProject": "dashboard-IOT"
+  }
 }

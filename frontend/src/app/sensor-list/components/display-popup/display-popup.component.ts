@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { SensorService } from 'src/app/main-layout/services/sensor.service';
 
@@ -12,9 +12,9 @@ export class DisplayPopupComponent implements OnInit {
   @Input() display = false;
   @Input() sensorId;
   @Output() closePopup: EventEmitter<boolean> = new EventEmitter<boolean>();
-  displayForm: FormGroup;
+  displayForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private sensorService: SensorService,
     private messageService: MessageService
   ) {
