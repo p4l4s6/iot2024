@@ -75,25 +75,21 @@ The backend is built using Django to ensure a robust architecture for managing d
 The frontend provides an interactive and responsive interface for system monitoring.
 
 #### Key Features
-  - Display nodes with real-time status
-  - Display sensors under each nodes
-  - Text input to the display device
-  - Chart view to :
-    - monitor relal-time sensor data
-    - display ML predicted anomoly sensor data
-  - Table view to check historical sensor data
+  - Login View: The login serves as the gateway to the system, ensuring data security and authorized access.
+  - Devices Card View: In this view, devices are displayed with detailed information. Sensor status is updated
+in a real-time behavior.
+  - Sensor List View: A list of sensors under selected device (node) is displayed in this view. Action controls
+like opening sensor data view, sending message to an output sensor (display) are provided on the sensor row.
+  - Sensor Data View: Sensor data is visualized and monitored in a line chart, with Machine Learning related
+predictions also highlighted on the chart. A table view with advanced filtering and searching capabilities is
+also provided to facilitate the analysis of historical sensor data.
 
 
 - **Main Libraries**:
-  - Angular
+  - Angular v15
   - Font Awesome
-  - Chart.js
-  - Primeng
-  
-- **Real-Time Updates**:
-  - Implements long polling for fetching updates from the backend.
-
----
+  - CanvasJS
+  - PrimeNG
 
 ### Hardware
 
@@ -183,19 +179,29 @@ Ensure the following tools and hardware components are available and properly se
       ```
 
 ### Frontend Setup 
-1. Enter frontend folder of the repository:
+1. Check if node is installed
+   ```
+   node -v
+   ```
+   If no, download and install from official site with version >=14.20  
+
+2. Enter frontend folder of the repository:
    ```
    cd frondend/
    ```
-2. Install dependencies:
+3. Install dependencies:
    ```
    npm install -s -f
    ```
-3. Serve front end
+4. Build application
+```
+   ng build
+```
+5. Serve front end
    ```
    ng serve
    ```
-4. Visit website on browser: localhost:4200
+6. Visit website on browser: localhost:4200
 
 
 ### Hardware Setup
